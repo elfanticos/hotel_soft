@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+// Routes
 import { AppRoutingModule } from './app-routing.module';
+
+// Page
 import { AppComponent } from './app.component';
 
 // Angular material
@@ -10,9 +12,11 @@ import {
   MatButtonModule,
   MatCheckboxModule
 } from '@angular/material';
+import { PgDashboardComponent } from './modules/main/pages/dashboard/pg-dashboard.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PgDashboardComponent
   ],
   imports: [
     BrowserModule,
