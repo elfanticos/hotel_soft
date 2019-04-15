@@ -1,3 +1,16 @@
 
-<button mat-raised-button color="primary">Boton</button>
-<router-outlet></router-outlet>
+<mat-toolbar class="example-header"> 
+  <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>Header
+</mat-toolbar>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav class="example-sidenav" #sidenav mode="side" opened [fixedInViewport]="options.value.fixed" [fixedTopGap]="options.value.top" [fixedBottomGap]="options.value.bottom">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>Menu
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <p>hola mundo</p>
+  </mat-sidenav-content>
+</mat-sidenav-container>

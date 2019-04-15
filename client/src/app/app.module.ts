@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 // Routes
 import { AppRoutingModule } from './app-routing.module';
 
@@ -10,7 +11,10 @@ import { AppComponent } from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MatButtonModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatSidenavModule,
+  MatToolbarModule,
+  MatIconModule
 } from '@angular/material';
 import { PgDashboardComponent } from './modules/main/pages/dashboard/pg-dashboard.component';
 @NgModule({
@@ -21,10 +25,15 @@ import { PgDashboardComponent } from './modules/main/pages/dashboard/pg-dashboar
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     //Angular material
     BrowserAnimationsModule,
     MatButtonModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
