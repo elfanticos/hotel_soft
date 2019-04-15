@@ -1,0 +1,10 @@
+
+<button mat-icon-button (click)="toggle()">
+  <mat-icon>menu</mat-icon>
+</button><span>Logo</span>
+<mat-nav-list>
+  <mat-list-item *ngFor="let per of permissions">
+    <mat-icon>{{per.icon}}</mat-icon>
+    <h4 mat-line>{{per.desc_system}}</h4>
+  </mat-list-item>
+</mat-nav-list>

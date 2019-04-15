@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PgDashboardComponent } from './modules/main/pages/dashboard/pg-dashboard.component';
+import { CsLoginComponent } from './auth/components/cs-login/cs-login.component';
 const routes: Routes = [
-  {path:'', component : PgDashboardComponent}
+  {path:'', component : CsLoginComponent}
   // {path:'dashboard', loadChildren:'app/modules/main/main.module#MainModule'}
 ];
 
