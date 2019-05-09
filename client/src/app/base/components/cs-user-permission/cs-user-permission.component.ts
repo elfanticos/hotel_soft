@@ -10,11 +10,11 @@ import { Subscription } from 'rxjs';
 
 export class CsUserPermisionComponent implements OnInit{
     permissions:any[] = [
-        {desc_system : 'Inicio', icon :'home'},
-        {desc_system : 'Reservas', icon : 'event_note'},
-        {desc_system : 'Cajas', icon : 'local_atm'},
-        {desc_system : 'Punto de venta', icon : 'local_grocery_store'},
-        {desc_system : 'Clientes', icon : 'perm_identity'}
+        {desc_system : 'Inicio', icon :'home', link : '/home'},
+        {desc_system : 'Reservas', icon : 'event_note', link : '/reservas/reservacion'},
+        {desc_system : 'Cajas', icon : 'local_atm', link : '/cajas/caja'},
+        {desc_system : 'Punto de venta', icon : 'local_grocery_store', link : '/ventas/venta'},
+        {desc_system : 'Clientes', icon : 'perm_identity', link : '/clientes/cliente'}
     ]
     subs_header:Subscription = new Subscription();
     constructor(

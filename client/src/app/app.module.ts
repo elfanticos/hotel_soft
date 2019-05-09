@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 
 // Page
 import { AppComponent } from './app.component';
-import { PgDashboardComponent } from './modules/main/pages/dashboard/pg-dashboard.component';
 
 // Components
 import {CsHeaderComponent} from './base/components/cs-header/cs-header.component';
@@ -34,7 +33,6 @@ import { Globals } from './globals';
   declarations: [
     AppComponent,
     // Pages
-    PgDashboardComponent,
     // Components
     CsHeaderComponent,
     CsUserPermisionComponent,

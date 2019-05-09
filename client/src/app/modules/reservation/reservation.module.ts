@@ -2,21 +2,21 @@ import { NgModule }     from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
-// Routing
-import { MainRoutingModule } from './main-routing.module';
+// Router
+import { ReservationRoutingModule } from './reservation-routing.module';
 
-// Page
-import { PgDashboardComponent } from './pages/dashboard/pg-dashboard.component';
+// Pages
+import { PgReservationComponent } from './pages/reservation/pg-reservation.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    MainRoutingModule,
+    ReservationRoutingModule,
     FormsModule,
     ReactiveFormsModule,
   ],
   declarations: [
-    PgDashboardComponent
+    PgReservationComponent
   ]
 })
-export class MainModule { }
+export class ReservationModule { }

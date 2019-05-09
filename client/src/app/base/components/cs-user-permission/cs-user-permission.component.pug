@@ -3,6 +3,9 @@ button(mat-icon-button, (click)="toggle()")
 span Logo
 
 mat-nav-list
-    mat-list-item(*ngFor="let per of permissions")
+    mat-list-item(
+        *ngFor="let per of permissions",
+        [routerLink]="per.link"
+    )
         mat-icon {{per.icon}}
         h4(mat-line) {{per.desc_system}}

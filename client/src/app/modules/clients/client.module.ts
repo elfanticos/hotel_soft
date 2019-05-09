@@ -2,21 +2,22 @@ import { NgModule }     from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
-// Routing
-import { MainRoutingModule } from './main-routing.module';
+// Router
+import { ClientsRoutingModule } from './client-routing.module';
 
-// Page
-import { PgDashboardComponent } from './pages/dashboard/pg-dashboard.component';
+// Pages
+import { PgClientComponent } from './pages/client/pg-client.component';
+
 
 @NgModule({
   imports: [
     CommonModule,
-    MainRoutingModule,
+    ClientsRoutingModule,
     FormsModule,
     ReactiveFormsModule,
   ],
   declarations: [
-    PgDashboardComponent
+    PgClientComponent
   ]
 })
-export class MainModule { }
+export class ClientsModule { }
