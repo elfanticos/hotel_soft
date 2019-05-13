@@ -1,6 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import { AppService } from 'src/app/app.service';
 import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
+import { IPermission, IUser } from 'src/app/auth/models/User';
+import { Globals } from 'src/app/globals';
 
 @Component({
     selector:'cs-user-permission',
@@ -8,21 +11,24 @@ import { Subscription } from 'rxjs';
     styleUrls : ['cs-user-permission.component.scss']
 })
 
-export class CsUserPermisionComponent implements OnInit{
-    permissions:any[] = [
-        {desc_system : 'Inicio', icon :'home', link : '/home'},
-        {desc_system : 'Reservas', icon : 'event_note', link : '/reservas/reservacion'},
-        {desc_system : 'Cajas', icon : 'local_atm', link : '/cajas/caja'},
-        {desc_system : 'Punto de venta', icon : 'local_grocery_store', link : '/ventas/venta'},
-        {desc_system : 'Clientes', icon : 'perm_identity', link : '/clientes/cliente'}
-    ]
+export class CsUserPermisionComponent implements OnInit, OnDestroy{
+    permissions:IPermission[] = [];
     subs_header:Subscription = new Subscription();
+    sub_user:Subscription = new Subscription();
     constructor(
-        private _appService:AppService
+        private _appService:AppService,
+        public _globals:Globals
     ) {
     }
 
     ngOnInit():void {
+        this.sub_user = this._appService.user.pipe(filter(fil=> fil != null)).subscribe(user => {
+            this.permissions = user.permisos;
+        });
+    }
+
+    ngOnDestroy():void {
+        this.sub_user.unsubscribe();
     }
 
     toggle():void {

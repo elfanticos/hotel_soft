@@ -1,6 +1,7 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import { AppService } from 'src/app/app.service';
 import { Subscription } from 'rxjs';
+import { Globals } from 'src/app/globals';
 
 @Component({
     selector : 'cs-header',
@@ -11,7 +12,8 @@ import { Subscription } from 'rxjs';
 export class CsHeaderComponent implements OnInit, OnDestroy {
     subs_header:Subscription = new Subscription();
     constructor(
-        private _appService:AppService
+        private _appService:AppService,
+        public _globals:Globals
     ) {}
 
     ngOnInit():void {

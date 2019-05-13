@@ -3,7 +3,7 @@
   <mat-icon>menu</mat-icon>
 </button><span>Logo</span>
 <mat-nav-list>
-  <mat-list-item *ngFor="let per of permissions" [routerLink]="per.link">
+  <mat-list-item *ngFor="let per of permissions" [routerLink]="per.link" (click)="_globals.__PERMISSION_SELECTED = per;">
     <mat-icon>{{per.icon}}</mat-icon>
     <h4 mat-line>{{per.desc_system}}</h4>
   </mat-list-item>

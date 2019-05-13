@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
     selector    : 'pg-dashboard',
@@ -8,4 +9,6 @@ import {Component} from '@angular/core';
 
 export class PgDashboardComponent {
     title:string = 'PgDashboardComponent';
+    value:string = null;
+    search:FormControl = new FormControl(null);
 }

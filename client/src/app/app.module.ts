@@ -25,7 +25,8 @@ import {
   MatSidenavModule,
   MatToolbarModule,
   MatIconModule,
-  MatListModule
+  MatListModule,
+  MatFormFieldModule
 } from '@angular/material';
 import { Globals } from './globals';
 
@@ -51,7 +52,8 @@ import { Globals } from './globals';
     MatSidenavModule,
     MatToolbarModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatFormFieldModule
   ],
   providers: [AppService,Globals],
   bootstrap: [AppComponent]

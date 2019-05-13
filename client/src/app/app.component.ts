@@ -19,6 +19,18 @@ export class AppComponent implements OnInit, OnDestroy{
     private _appService : AppService,
     public _globals: Globals
     ) {
+      this._appService.user.next({permisos : [
+        {desc_system : 'Inicio'  , icon :'home', link : '/home'},
+        {desc_system : 'Reservas', icon : 'event_note', link : '/reservas/reservacion'},
+        {desc_system : 'Cajas'   , icon : 'local_atm', link : '/cajas/caja'},
+        {desc_system : 'Punto de venta', icon : 'local_grocery_store', link : '/ventas/venta'},
+        {desc_system : 'Clientes', icon : 'perm_identity', link : '/clientes/cliente'}
+    ]});
+    this._globals.__PERMISSION_SELECTED = {
+      desc_system : 'Inicio', 
+      icon        : 'home', 
+      link        : '/home'
+    };
   }
 
   ngOnInit():void {

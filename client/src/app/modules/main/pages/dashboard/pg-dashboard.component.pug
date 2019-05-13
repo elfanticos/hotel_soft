@@ -1,1 +1,7 @@
-p(style="margin-left:16px") dashboard
+mat-form-field(appearance="fill")
+    span(matPrefix)
+        mat-icon search
+    mat-label Buscar clientes
+    input(matInput, type="text", placeholder="", [formControl]="search")
+    button(mat-button, *ngIf="search.value", matSuffix, mat-icon-button, aria-label="Clear", (click)="search.setValue(null);")
+        mat-icon close
