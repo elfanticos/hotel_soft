@@ -245,3 +245,59 @@ VALUES
 ('Habitación 308',1,3,'1'),
 ('Habitación 309',1,3,'1'),
 ('Habitación 310',1,3,'1');
+
+
+CREATE OR REPLACE FUNCTION func_01__get_data_inicial()
+    RETURNS jsonb
+    LANGUAGE 'plpgsql'
+
+    COST 100
+    VOLATILE 
+AS $BODY$
+
+DECLARE
+    -- Constants
+	__MSJ_ERROR          CONSTANT CHARACTER VARYING DEFAULT 'Hubo un error';
+	__FLG_ACTI           CONSTANT CHARACTER VARYING DEFAULT '1';
+    ---------------------------------------------------------
+    __msj_excep       CHARACTER VARYING;
+	__result          JSONB;
+	__combo_type_room JSONB;
+	__combo_floor     JSONB;
+	__combo_room      JSONB;
+
+BEGIN
+	-- arm room combo
+		SELECT ARRAY_TO_JSON(ARRAY_AGG(tab))
+		  INTO __combo_room
+		  FROM (SELECT * FROM habitacion ORDER BY id_habitacion) tab;
+	
+	-- arm type room combo
+		SELECT ARRAY_TO_JSON(ARRAY_AGG(tab))
+		  INTO __combo_type_room
+		  FROM (SELECT * FROM tipo_habitacion ORDER by desc_tipo_habitacion) tab;
+	
+	-- arm floor combo
+		SELECT ARRAY_TO_JSON(ARRAY_AGG(tab))
+		  INTO __combo_floor
+		  FROM (SELECT * FROM piso ORDER by desc_piso) tab;
+		  
+	-- answer
+		__result := JSONB_BUILD_OBJECT(
+			'data' , JSONB_BUILD_OBJECT(
+				'combo_room'      , __combo_room,
+				'combo_type_room' , __combo_type_room,
+				'combofloor'      , __combo_floor
+			)
+		);
+RETURN __result;
+EXCEPTION
+   WHEN SQLSTATE 'HOTEL' THEN
+        __result = JSONB_BUILD_OBJECT('status', 400, 'msj' , SQLERRM);
+        RETURN __result;
+   WHEN OTHERS THEN
+        GET STACKED DIAGNOSTICS __msj_excep = PG_EXCEPTION_CONTEXT;
+        __result := JSONB_BUILD_OBJECT('msj', __MSJ_ERROR ,'status', 500, 'stack_error' , CONCAT(SQLERRM, ' - ', __msj_excep));
+        RETURN __result;  
+END;
+$BODY$;

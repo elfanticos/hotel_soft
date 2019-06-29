@@ -13,7 +13,7 @@ global.ensureAuth = (req, res, next) => {
 
         // Url que omitan la validación de token
         let url_NoToken = [
-            'getCombosByMascota',
+            'getInitHome',
         ];
 
         if (url_NoToken.indexOf(trimmedPath) < 0) {
